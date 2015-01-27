@@ -95,6 +95,30 @@
             ed.addButton('deets_tw', {title : 'Insert a link to your Twitter page. See "Settings > Contact Details" for help.', cmd : 'cx_contactdeets_insert_twitter', image: url + '/buttons/mce-tw.png' });
         },   
     });
+
+    tinymce.create('tinymce.plugins.deets_li', {
+        init : function(ed, url) {
+                // Register command for when button is clicked
+                ed.addCommand('cx_contactdeets_insert_linkedin', function() {
+                    selected = tinyMCE.activeEditor.selection.getContent();
+
+                    if( selected ){
+                        //If text is selected when button is clicked
+                        //Wrap shortcode around it.
+                        //content =  '[shortcode]'+selected+'[/shortcode]';
+                        alert("Sorry, this won't work if you have selected text. Please click the place you'd like the thing to appear and then press this button again.");
+                        content = content;
+                    }else{
+                        content =  '[social-linkedin]';
+                    }
+
+                    tinymce.execCommand('mceInsertContent', false, content);
+                });
+
+            // Register buttons - trigger above command when clicked
+            ed.addButton('deets_li', {title : 'Insert a link to your LinkedIn page. See "Settings > Contact Details" for help.', cmd : 'cx_contactdeets_insert_linkedin', image: url + '/buttons/mce-li.png' });
+        },   
+    });
     
     tinymce.create('tinymce.plugins.deets_fb', {
             init : function(ed, url) {
@@ -151,6 +175,7 @@
     tinymce.PluginManager.add('deets_phone', tinymce.plugins.deets_phone);
     tinymce.PluginManager.add('deets_address', tinymce.plugins.deets_address);
     tinymce.PluginManager.add('deets_tw', tinymce.plugins.deets_tw);
+    tinymce.PluginManager.add('deets_li', tinymce.plugins.deets_li);
     tinymce.PluginManager.add('deets_fb', tinymce.plugins.deets_fb);
     tinymce.PluginManager.add('deets_gplus', tinymce.plugins.deets_gplus);
 })();

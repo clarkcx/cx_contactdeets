@@ -94,6 +94,30 @@ function cx_sc_contactdeets_twitter($atts, $content = null) {
 
 	return $social_link;
 }
+function cx_sc_contactdeets_linkedin($atts, $content = null) {
+	extract(shortcode_atts(array(
+		"link" => 'true',
+		"linktext" => 'Follow us on LinkedIn',
+		"icon" => 'false'
+	), $atts));
+	
+    $svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M92.5 0.2H7.5c-4.1 0-7.4 3.2-7.4 7.2v85.3c0 4 3.3 7.2 7.4 7.2h84.9c4.1 0 7.4-3.2 7.4-7.2V7.3C99.8 3.4 96.5 0.2 92.5 0.2zM29.7 85.1h-14.8V37.5h14.8V85.1zM22.3 31c-4.7 0-8.6-3.8-8.6-8.6 0-4.7 3.8-8.6 8.6-8.6 4.7 0 8.6 3.8 8.6 8.6C30.9 27.2 27.1 31 22.3 31zM85.1 85.1H70.3V62c0-5.5-0.1-12.6-7.7-12.6 -7.7 0-8.9 6-8.9 12.2v23.5H39V37.5H53.2v6.5h0.2c2-3.7 6.8-7.7 14-7.7 15 0 17.7 9.8 17.7 22.7v26.1H85.1z"/></svg>';
+			
+	$contact_details = get_option( 'cx_contactdeets' );
+	$pagename = $contact_details['linkedin'];
+	$url = '';
+	
+	if ( ($icon == 'true') && ($linktext == 'false') ) {
+		$social_link = '<a href="' . $url . $pagename . '" class="social-li icon notext">'.$svg.'</a>';
+	} elseif ($icon == 'true') {
+		$social_link = '<a href="' . $url . $pagename . '" class="social-li icon cx-social-icon">' . $svg . $linktext . '</a>';
+	} else {
+		$social_link = '<a class="social-li noicon" href="' . $url . $pagename . '">'. $linktext .'</a>';
+	}
+
+	return $social_link;
+}
+
 function cx_sc_contactdeets_facebook($atts, $content = null) {
 	extract(shortcode_atts(array(
 		"link" => 'true',
@@ -148,6 +172,7 @@ add_shortcode('contact-postcode', 'cx_sc_contactdeets_address_pc');
 add_shortcode('contact-phone', 'cx_sc_contactdeets_phone');
 
 add_shortcode('social-twitter', 'cx_sc_contactdeets_twitter');
+add_shortcode('social-linkedin', 'cx_sc_contactdeets_linkedin');
 add_shortcode('social-facebook', 'cx_sc_contactdeets_facebook');
 add_shortcode('social-gplus', 'cx_sc_contactdeets_gplus');
 
@@ -156,7 +181,7 @@ add_shortcode('social-gplus', 'cx_sc_contactdeets_gplus');
 *************************************/
 
 function register_button_cx_contactdeets( $buttons ) {
-   array_push( $buttons, "deets_email", "deets_phone", "deets_address", "deets_tw", "deets_fb", "deets_gplus" );
+   array_push( $buttons, "deets_email", "deets_phone", "deets_address", "deets_tw", "deets_li", "deets_fb", "deets_gplus" );
    return $buttons;
 }
 
@@ -165,6 +190,7 @@ function add_plugin_cx_contactdeets( $plugin_array ) {
 	$plugin_array['deets_phone'] = plugins_url('/js/contactdeets.js',__file__);
 	$plugin_array['deets_address'] = plugins_url('/js/contactdeets.js',__file__);
    $plugin_array['deets_tw'] = plugins_url('/js/contactdeets.js',__file__);
+   $plugin_array['deets_li'] = plugins_url('/js/contactdeets.js',__file__);
    $plugin_array['deets_fb'] = plugins_url('/js/contactdeets.js',__file__);
    $plugin_array['deets_gplus'] = plugins_url('/js/contactdeets.js',__file__);
    return $plugin_array;
