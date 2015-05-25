@@ -52,7 +52,7 @@ function cx_sc_contactdeets_phone($atts, $content = null) {
 	extract(shortcode_atts(array(
 		"link" => 'true',
 		"linktext" => 'false',
-		"class" => ''
+		"class" => 'tel'
 	), $atts));
 	
 	$contact_details = get_option( 'cx_contactdeets' );
@@ -187,6 +187,39 @@ function cx_sc_contactdeets_gplus($atts, $content = null) {
 	return $social_link;
 }
 
+function cx_sc_contactdeets_vimeo($atts, $content = null) {
+	extract(shortcode_atts(array(
+		"link" => 'true',
+		"linktext" => 'Find us on Vimeo',
+		"page" => 'false',
+		"icon" => 'false'
+	), $atts));
+	
+	#$svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 68.8 67.2" enable-background="new 0 0 68.833 67.235" xml:space="preserve"><defs><rect x="-102" width="272" height="67.3"/></defs><clipPath><use overflow="visible"/></clipPath><path clip-path="url(#SVGID_2_)" d="M170 12.6C170 5.7 164.3 0 157.2 0h-42.7c-7.1 0-12.8 5.7-12.8 12.6v42.1c0 7 5.7 12.6 12.8 12.6h42.7c7.1 0 12.8-5.7 12.8-12.6V12.6zM152.9 32.2v7h-2.9v-7h-5.7l0-2.8h5.7v-5.6h2.9v5.6h5.7v2.8H152.9zM140 12.6h-3.7c2.5 2.5 4.2 4.5 4.2 8.3 0 7.2-6.7 8.1-6.7 11.7 0 3.6 8.7 5 8.7 12.8 0 8-8.9 11.4-15.7 11.4 -5.4 0-12.9-2.1-12.9-8.7 0-3.1 2-5.7 4.6-7.4 3.3-2 7.6-2.5 11.4-2.8 -1-1.3-1.8-2.5-1.8-4.1 0-0.8 0.2-1.6 0.6-2.4 -0.6 0.1-1.3 0.1-1.9 0.1 -5.5 0-9.9-3.9-9.9-9.5 0-8 7.8-12.4 15.1-12.4h11.8L140 12.6zM135.2 23.9c0-4.1-2.4-11.1-7.5-11.1 -3.8 0-5.5 3.2-5.5 6.4 0 4.2 2.4 10.7 7.5 10.7C133.3 30 135.2 27.2 135.2 23.9M138.5 47.8c0-3.8-3.8-6-6.5-8 -0.5-0.1-0.9-0.1-1.4-0.1 -4.6 0-11.4 1.4-11.4 7.2 0 5.4 5.9 7.4 10.5 7.4C133.9 54.3 138.5 52.6 138.5 47.8M68.6 54.7V12.6C68.6 5.7 62.9 0 55.8 0H13.1C6 0 0.3 5.7 0.3 12.6v42.1c0 7 5.7 12.6 12.8 12.6h24.2V40.7h-10v-9.8h10v-7.3c0-8.7 5.5-13.4 13.4-13.4 3.7 0 6.6 0.3 8 0.4v9.1l-5.9 0c-4.3 0-5.5 2-5.5 4.9v6.3h10.4l-1.3 9.8h-9v26.6h8.5C62.9 67.3 68.6 61.6 68.6 54.7M-31.9 14.3c-2.6 1.1-5.4 1.9-8.3 2.2 3-1.8 5.3-4.5 6.3-7.8 -2.8 1.6-5.9 2.8-9.1 3.4 -2.6-2.8-6.4-4.5-10.5-4.5 -8 0-14.4 6.4-14.4 14.1 0 1.1 0.1 2.2 0.4 3.2 -11.9-0.6-22.6-6.2-29.6-14.8 -1.2 2.1-2 4.5-2 7.1 0 4.9 2.5 9.2 6.4 11.8 -2.4-0.1-4.6-0.7-6.5-1.8v0.2c0 6.9 4.9 12.6 11.5 13.9 -1.2 0.3-2.5 0.5-3.8 0.5 -0.9 0-1.8-0.1-2.7-0.2 1.8 5.6 7.1 9.7 13.4 9.8 -4.9 3.8-11.1 6-17.8 6 -1.2 0-2.3 0-3.5-0.2 6.4 4 13.9 6.4 22.1 6.4 26.4 0 40.9-21.6 40.9-40.3 0-0.6 0-1.2 0-1.8C-36.3 19.6-33.8 17.1-31.9 14.3"/></svg>';
+	$svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 841.9 595.3" enable-background="new 0 0 841.889 595.281" xml:space="preserve"><path fill="#231F20" d="M661.5 0H180.5C148.9 0 123 25.9 123 57.5v480.9C123 570.1 148.9 596 180.5 596h480.9C693.1 596 719 570.1 719 538.5V57.5C719 25.9 693.1 0 661.5 0zM623.1 189.2c-4.7 24.3-35.7 109.4-91.9 184.6 -24.6 31.8-53.3 62.9-90.2 84.5 -13.6 7.9-40.5 18-58.4 10.5 -12.5-5.2-22.1-16.2-29.8-29.9 -13.8-24.8-21.3-58.8-27.8-84.5 -6-23.6-11.6-46-19-66.5 -4.3-12-6.9-24.2-11.8-35.8 0 0 0-0.1-0.1-0.1 0 0 0 0.1 0.1 0.1 -0.2-0.3-0.4-0.6-0.6-0.9 0.2 0.2 0.3 0.5 0.5 0.8 -1.4-3.2-2.9-6.4-4.8-9.5 -14.1-23.4-34.2-0.9-55.3-4 -5.7-0.8-10-4.9-12.8-9.3 -1.6-2.5 1.2-5.1-7-7.1v-2.3c33.1-24.1 59.4-53.4 94.9-74 11.1-6.5 30.9-13.8 46.3-9.3 12.1 3.5 23.1 14.7 29 31.1 0 0 0 0 0 0 1.1 0 2 5.4 2.8 7.8 5.9 18.3 9.1 41.7 12.1 59.5 4.8 28 4 71.4 20 95.9h0c2.1 0 4.5 5.7 7.2 8.6 26.2 27.7 46.2-11.3 56.9-30.8 9.2-17 17.5-34.9 18.9-51.1 0.8-9.2 0.4-16.6-1.2-22.3 -4.6-16.3-18.7-20.2-40.7-19.5 -2.8 0.1-5.7 0.2-8.8 0.5 20.1-61.5 79.1-87.2 96.5-89.8 21.5-3.2 52.7-2.6 67.5 15.8 2.9 3.6 5.1 7.7 6.5 11.9C625.8 164.7 625.3 177.1 623.1 189.2z"/></svg>';
+
+	$contact_details = get_option( 'cx_contactdeets' );
+	$pagename = $contact_details['vimeo'];
+
+	if ($page == 'false') {
+		$pagename = $contact_details['vimeo'];
+	} else {
+		$pagename = esc_attr( $page );
+	}
+
+	$url = '';
+	
+	if ( ($icon == 'true') && ($linktext == 'false') ) {
+		$social_link = '<a href="' . $url . $pagename . '" class="social-vim icon notext">'.$svg.'<span style="display:none;" class="svg-fallback">Find us on Vimeo</span></a>';
+	} elseif ($icon == 'true') {
+		$social_link = '<a href="' . $url . $pagename . '" class="social-vim icon cx-social-icon">' . $svg . $linktext . '</a>';
+	} else {
+		$social_link = '<a class="social-vim noicon" href="' . $url . $pagename . '">'. $linktext .'</a>';
+	}
+
+	return $social_link;
+}
+
 function cx_sc_contactdeets_youtube($atts, $content = null) {
 	extract(shortcode_atts(array(
 		"link" => 'true',
@@ -229,6 +262,7 @@ add_shortcode('social-linkedin', 'cx_sc_contactdeets_linkedin');
 add_shortcode('social-facebook', 'cx_sc_contactdeets_facebook');
 add_shortcode('social-youtube', 'cx_sc_contactdeets_youtube');
 add_shortcode('social-gplus', 'cx_sc_contactdeets_gplus');
+add_shortcode('social-vimeo', 'cx_sc_contactdeets_vimeo');
 
 /*************************************
 * Shortcodes Part 2: Add button to Tiny MCE
